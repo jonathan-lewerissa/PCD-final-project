@@ -16,7 +16,7 @@ if not os.path.isdir(UPLOAD_FOLDER):
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'asdfuoiquiwefnhkasdjfh'
+app.secret_key = os.environ.get('SECRET_KEY')
 
 
 def allowed_file(filename):

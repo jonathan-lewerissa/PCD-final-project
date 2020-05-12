@@ -2,6 +2,8 @@ import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
 
+import os
+
 
 class Cropper:
 
@@ -23,8 +25,12 @@ class Cropper:
 
         return self.cropped_images
 
-    def __preprocess(self, lower_threshold: int = 240) -> None:
+    def __preprocess(self, lower_threshold: int = 200) -> None:
         # perform gray image and blurring
+
+        if 'THRESHOLD' in os.environ:
+            lower_threshold = os.environ.get('THRESHOLD')
+
         self.imgray = cv.cvtColor(self.image, cv.COLOR_RGB2GRAY)
         self.imgray = cv.blur(self.imgray, (5, 5))
 

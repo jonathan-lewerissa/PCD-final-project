@@ -11,6 +11,9 @@ from cropper import Cropper
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
+if not os.path.isdir(UPLOAD_FOLDER):
+    os.mkdir(UPLOAD_FOLDER, mode=0o777)
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'asdfuoiquiwefnhkasdjfh'

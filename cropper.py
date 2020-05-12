@@ -29,7 +29,7 @@ class Cropper:
         # perform gray image and blurring
 
         if 'THRESHOLD' in os.environ:
-            lower_threshold = os.environ.get('THRESHOLD')
+            lower_threshold = int(os.environ.get('THRESHOLD'))
 
         self.imgray = cv.cvtColor(self.image, cv.COLOR_RGB2GRAY)
         self.imgray = cv.blur(self.imgray, (5, 5))
